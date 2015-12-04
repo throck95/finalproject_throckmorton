@@ -81,7 +81,6 @@ $( function() {
                 type: 'text',
                 placeholder: 'Enter Brewery',
                 id: 'beer_brewery',
-                name: 'beer_brewery',
                 class: 'input'
             }));
             $('#beer_brewery_label').insertBefore("#beverage_descrip_label");
@@ -136,7 +135,6 @@ $( function() {
                 type: 'text',
                 placeholder: 'Enter Vineyard',
                 id: 'wine_vineyard',
-                name: 'wine_vineyard',
                 class: 'input'
             }));
             $('#wine_vineyard_label').insertBefore("#beverage_descrip_label");
@@ -150,7 +148,6 @@ $( function() {
                 type: 'number',
                 placeholder: 'Enter Vintage',
                 id: 'wine_vintage',
-                name: 'wine_vintage',
                 class: 'input'
             }));
             $('#wine_vintage_label').insertBefore("#beverage_descrip_label");
@@ -192,7 +189,6 @@ $( function() {
                 cols: '100',
                 placeholder: 'Enter ingredients separated by commas.',
                 id: 'md_ingredients',
-                name: 'md_ingredients',
                 class: 'input'
             }));
             $('#md_ingredients_label').insertBefore("#beverage_descrip_label");

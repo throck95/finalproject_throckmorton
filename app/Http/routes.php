@@ -21,11 +21,15 @@ Route::get('/login', function() {
 Route::get('/register', function() {
     return view('beverages/register');
 });
+
+Route::get("beverages/json","BeverageController@getBeverageJson");
+Route::get("beverages/jsonID/{id}","BeverageController@getCommentsForBeverageJson");
+Route::get("beverages/addRating/{id}","BeverageController@addRating");
 Route::resource("beverages","BeverageController",["names"=>["index"=>"beverages_path","show"=>"beverage_path","create"=>"beverage_create","store"=>"beverage_store","update"=>"beverage_update","edit"=>"beverage_edit"],"except"=>["destroy","edit"]]);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::post('/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...

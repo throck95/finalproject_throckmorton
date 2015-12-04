@@ -11,8 +11,6 @@
 <body>
 <nav>
     <a href="/beverages">Home</a> |
-    <a href="/login">Login</a> |
-    <a href="/register">Register</a>
     @yield("nav")
 </nav>
 <div id="content">
@@ -22,8 +20,8 @@
 <footer id="footer">
     @yield("footer")
     <br />
-    WebAdmin: Tyler Throckmorton<br />
-    &copy;2015 Alchohol Friend & Co.
+    &copy;2015 Alcohol Friend & Co.<br />
+    WebAdmin: <a href="mailto:tyler.throckmorton@msj.edu">Tyler Throckmorton</a>
 </footer>
 </body>
 </html>

@@ -2,62 +2,41 @@
 
 @section("header")
     {!!HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')!!}
+    {!!HTML::script('http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js')!!}
+    {!!HTML::script('js/beverages_filter.js')!!}
 @stop
-
+@section("nav")
+    @include("beverages/_auth_header")
+@stop
 @section("content")
-    <section>
+    <section ng-app="beveragesApp" ng-controller="beveragesController">
         <h1>Beverages</h1>
-        <p>
-            <input type="text" id="filterText" placeholder="Search" onkeyup="filter(this)" /><br />
-            <select id="beverage_type" onchange="selectFilter()">
-                <option value="1">Wine</option>
-                <option value="2">Beer</option>
-                <option value="3">Mixed Drink</option>
-            </select>
+        <p>Sort By:
+            <input type="button" ng-click="filterVar='beverage_name'" value="Name" />
+            <input type="button" ng-click="filterVar='beverage_type'" value="Type" />
+            <input type="button" ng-click="filterVar='average_rating'" value="Rating" />
+            <label>Search: </label><input type="text" ng-model="beverageFilter" />
+            <br />
+            Quick Filters:
+            <input type="button" ng-click="beverageFilter='beer'" value="Beer" />
+            <input type="button" ng-click="beverageFilter='wine'" value="Wine" />
+            <input type="button" ng-click="beverageFilter='mixed drink'" value="Mixed Drink" />
         </p>
         <table id="theList">
-            <row><th>Beverage Name</th><th>Beverage Type</th><th>Beverage Rating</th></row>
-            @foreach($beverages as $beverage)
-                <row>
-                    <td><a href="{{URL::route('beverage_path',[$beverage->beverage_id])}}">{{$beverage->beverage_name}}</a></td>
-                    <td>{{$beverage->beverage_type}}</td>
-                    <td>{{$ratings}}</td>
-                </row>
-                <li><a href="{{URL::route('beverage_path',[$beverage->beverage_id])}}">{{$beverage->beverage_name}}</a></li>
-            @endforeach
+            <tr><th class="tableID">ID</th><th class="tableName">Name</th><th class="tableType">Type</th><th class="tableRating">Rating</th></tr>
+                <tr ng-repeat="beverage in beverages | filter:beverageFilter | orderBy:filterVar track by $index">
+                    <td class="tableID">@{{ beverage.beverage_id }}</td>
+                    <td class="tableName"><a href="http://localhost:8000/beverages/@{{ beverage.beverage_id }}">@{{ beverage.beverage_name }}</a></td>
+                    <td class="tableType">@{{beverage.beverage_type}}</td>
+                    <td class="tableRating">@{{beverage.average_rating}}</td>
+                </tr>
         </table>
-        <input type="button" onclick="location.href='{{URL::route('beverage_create')}}';" value="Add New Drink" />
+        <br />
+        @if(isset(\Illuminate\Support\Facades\Auth::user()->id))
+            <input type="button" onclick="location.href='{{URL::route('beverage_create')}}';" value="Add New Drink" />
+        @else
+            <input type="button" onclick="location.href='{{URL::to('/login')}}';" value="Login Before Adding Drinks" />
+        @endif
     </section>
-    <script>
-        function filter(element) {
-            var value = $(element).val().toLowerCase();
-
-            $("#theList > li").each(function() {
-                if ($(this).text().toLowerCase().search(value) > -1) {
-                    $(this).removeClass("hidden");
-                }
-                else {
-                    $(this).addClass("hidden");
-                    var hiddenItem = $(this);
-                    hiddenItem.detach();
-                    $("#theList").append(hiddenItem);
-                }
-            });
-        }
-        function selectFilter() {
-            var sel_value = $('option:selected').val();
-            if(sel_value == "1") {
-                $("#theList > li").each(function() {
-
-                })
-            }
-            else if(sel_value == "2") {
-
-            }
-            else if(sel_value == "3") {
-
-            }
-        }
-    </script>
 @stop
 

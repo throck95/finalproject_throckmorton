@@ -34,6 +34,7 @@ a {
 a:hover {
     color: #ffffff;
     font-size: 1.25em;
+    font-weight: bolder;
 }
 
 a:visited {
@@ -80,5 +81,46 @@ ul {
 }
 
 select {
+    color: #000000;
+}
+
+#theList, tr {
+    margin: auto auto;
+    background-color: #ffffff;
+    border: 1px solid black;
+    color: #000000;
+}
+
+tr:nth-child(even) {
+    background-color: #adadad;
+}
+
+td,th {
+    color: #000000;
+    text-align: left;
+    padding: 5px;
+}
+
+td {
+    height: 2.6em;
+}
+
+nav, #footer {
+    height: 2em;
+}
+
+.tableName {
+    width: 65%;
+}
+
+.tableType {
+    width: 20%;
+}
+
+.tableRating, .tableID {
+    width: 10%;
+}
+
+.tableName > a {
     color: #000000;
 }
