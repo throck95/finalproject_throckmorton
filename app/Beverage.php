@@ -99,7 +99,7 @@ class Beverage extends Model
     }
 
     public static function getAllCommentsByBeverage($beverage_id) {
-        $conn = mysqli_connect("localhost","root","QyPdsATN8eIu99gcTb81vS","throckmorton_finalproject");
+        $conn = mysqli_connect(getenv('DB_HOST'),getevn('DB_USERNAME'),getenv('DB_PASSWORD'),getenv('DB_DATABASE'));
         if(!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -130,7 +130,7 @@ class Beverage extends Model
     }
 
     public function addRatingOnBeverage($rating,$comment,$beverage_id,$user_id) {
-        $conn = mysqli_connect("localhost","root","QyPdsATN8eIu99gcTb81vS","throckmorton_finalproject");
+        $conn = mysqli_connect(getenv('DB_HOST'),getevn('DB_USERNAME'),getenv('DB_PASSWORD'),getenv('DB_DATABASE'));
         if(!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -142,7 +142,7 @@ class Beverage extends Model
     }
 
     public static function getAllBeverages() {
-        $conn = mysqli_connect("localhost","root","QyPdsATN8eIu99gcTb81vS","throckmorton_finalproject");
+        $conn = mysqli_connect(getenv('DB_HOST'),getevn('DB_USERNAME'),getenv('DB_PASSWORD'),getenv('DB_DATABASE'));
         if(!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
