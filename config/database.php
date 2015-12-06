@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => 'localhost',
-            'database'  => 'throckmorton_finalproject',
-            'username'  => 'root',
-            'password'  => 'QyPdsATN8eIu99gcTb81vS',
+            'host'      => getenv('DB_HOST'),
+            'database'  => getenv('DB_DATABASE'),
+            'username'  => getenv('DB_USERNAME'),
+            'password'  => getenv('DB_PASSWORD'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
