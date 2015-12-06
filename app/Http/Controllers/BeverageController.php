@@ -80,7 +80,7 @@ class BeverageController extends Controller
         for($i = 0; $i < count($url)-1; $i++) {
             $newUrl .= $url[$i];
         }
-        if($newUrl == "http:localhost:8000beveragesaddRating") {
+        if($newUrl == "http:tyler.finalproject.dennisiscool.techbeveragesaddRating") {
             $beverage_id = $request->id;
             $rating = floatval($request->rating)/20;
             $comment = $request->comment;
@@ -89,7 +89,7 @@ class BeverageController extends Controller
             $insert_comment_id = DB::table('beverage_comments')->insertGetId(['beverage_id'=>$beverage_id,'user_id'=>$user_id,'comment_descrip'=>$comment,'timestamp'=>$timestamp,'rating'=>$rating],'comment_id');
             return redirect()->to("/beverages/" . $beverage_id);
         }
-        else if($newUrl == "http:localhost:8000beverages") {
+        else if($newUrl == "http:tyler.finalproject.dennisiscool.techbeverages") {
             $beverage_type = $request->beverage_type;
             $beverage_name = $request->beverage_name;
             $beverage_descrip = $request->beverage_descrip;
