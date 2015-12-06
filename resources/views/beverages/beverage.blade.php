@@ -30,7 +30,7 @@
             <li>
                 {{$comments[$i]->rating . " -- \""}}
                 {{$comments[$i]->comment_descrip . "\" - "}}
-                {{$comments[$i]->timestamp}}
+                {{$comments[$i]->updated_at}}
                 {{$userName[$i]->fname}}
             </li>
         @endfor
