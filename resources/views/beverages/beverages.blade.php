@@ -26,7 +26,7 @@
             <tr><th class="tableID">ID</th><th class="tableName">Name</th><th class="tableType">Type</th><th class="tableRating">Rating</th></tr>
                 <tr ng-repeat="beverage in beverages | filter:beverageFilter | orderBy:filterVar track by $index">
                     <td class="tableID">@{{ beverage.beverage_id }}</td>
-                    <td class="tableName"><a href="http://localhost:8000/beverages/@{{ beverage.beverage_id }}">@{{ beverage.beverage_name }}</a></td>
+                    <td class="tableName"><a href="http://tyler.finalproject.dennisiscool.tech/beverages/@{{ beverage.beverage_id }}">@{{ beverage.beverage_name }}</a></td>
                     <td class="tableType">@{{beverage.beverage_type}}</td>
                     <td class="tableRating">@{{beverage.average_rating}}</td>
                 </tr>
