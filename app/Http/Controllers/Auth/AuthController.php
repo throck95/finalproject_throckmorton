@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
     protected $redirectPath = '/beverages';
-    protected $loginPath = '/login';
+    protected $loginPath = '/auth/login';
     /**
      * Create a new authentication controller instance.
      *
@@ -83,7 +83,7 @@ class AuthController extends Controller
         $rules = array('email' => 'required|email', 'password' => 'required|alphaNum|min:6');
         $validator = Validator::make(Input::all(),$rules);
         if($validator->fails()) {
-            return Redirect::to('/login')
+            return Redirect::to('/auth/login')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         }
@@ -96,7 +96,7 @@ class AuthController extends Controller
         }
         else {
             //return "failed";
-            return Redirect::to('/login');
+            return Redirect::to('/auth/login');
         }
     }
 
@@ -119,7 +119,7 @@ class AuthController extends Controller
             'password' => 'required|confirmed|alphaNum|min:6');
         $validator = Validator::make(Input::all(),$rules);
         if ($validator->fails()) {
-            return Redirect::to('/register')
+            return Redirect::to('/auth/register')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         }
@@ -138,7 +138,7 @@ class AuthController extends Controller
             return redirect()->intended('/beverages');
         }
         else {
-            return Redirect::to('/register');
+            return Redirect::to('/auth/register');
         }
     }
 }
