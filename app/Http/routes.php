@@ -15,13 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function() {
-    return view('beverages/login');
-});
-Route::get('/register', function() {
-    return view('beverages/register');
-});
-
 Route::get("beverages/json","BeverageController@getBeverageJson");
 Route::get("beverages/jsonID/{id}","BeverageController@getCommentsForBeverageJson");
 Route::get("beverages/addRating/{id}","BeverageController@addRating");
